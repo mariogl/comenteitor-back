@@ -3,12 +3,15 @@ import chalk from "chalk";
 import Debug from "debug";
 import portfinder from "portfinder";
 import initializeServer from "./server/index.js";
+import connectDB from "./database/index.js";
 
 const debug = Debug("commenteitor-api:root");
 
 const port = process.env.PORT ?? 4000;
+const connectionString = process.env.MONGO_CONNECTION;
 
 try {
+  await connectDB(connectionString);
   await initializeServer(+port);
 } catch (error) {
   if (error.code === "EADDRINUSE") {
