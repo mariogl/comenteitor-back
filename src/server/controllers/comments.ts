@@ -1,17 +1,33 @@
 import { NextFunction, Request, Response } from "express";
 import Comment from "../../database/models/Comment.js";
+import { IComment } from "../../types/interfaces.js";
 
 export const getComments = async (
   req: Request,
-  res: Response,
+  res: Response<{ comments: IComment[] }>,
   next: NextFunction
 ) => {
   try {
-    const comments = await Comment.find();
+    const comments: IComment[] = await Comment.find();
 
     res.json({
       comments,
     });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const newComment = async (
+  req: Request,
+  res: Response<{ comment: IComment }>,
+  next: NextFunction
+) => {
+  try {
+    const comment = req.body;
+    const newComment: IComment = await Comment.create(comment);
+
+    res.status(201).json({ comment: newComment });
   } catch (error) {
     next(error);
   }

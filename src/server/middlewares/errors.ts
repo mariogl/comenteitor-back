@@ -12,7 +12,7 @@ const generalError = (
   next: NextFunction
 ) => {
   debug(chalk.red(error.message));
-  res.json({ msg: "error" });
+  res.status(500).json({ msg: "error" });
 };
 
 export default generalError;
