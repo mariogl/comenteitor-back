@@ -11,6 +11,7 @@ const port = process.env.PORT ?? 4000;
 const connectionString = process.env.MONGO_CONNECTION;
 
 try {
+  debug(chalk.green("Initializing..."));
   await connectDB(connectionString);
   await initializeServer(+port);
 } catch (error) {

@@ -13,6 +13,6 @@ export const getComments = async (
       comments,
     });
   } catch (error) {
-    console.log("petó");
+    next(error);
   }
 };
