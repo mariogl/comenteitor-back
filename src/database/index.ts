@@ -8,6 +8,15 @@ const debug = Debug("commenteitor-api:db:root");
 const connectDB = async (connectionString: string) =>
   new Promise((resolve, reject) => {
     mongoose.set("debug", true);
+    mongoose.set("toJSON", {
+      virtuals: true,
+      transform: (doc, ret) => {
+        const newRet = { ...ret };
+        delete newRet.__v;
+        delete newRet._id;
+        return newRet;
+      },
+    });
 
     mongoose.connect(connectionString, (error) => {
       if (error) {
