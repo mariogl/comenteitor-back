@@ -32,3 +32,18 @@ export const newComment = async (
     next(error);
   }
 };
+
+export const deleteComment = async (
+  req: Request,
+  res: Response<{ comment: IComment }>,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const deletedComment: IComment = await Comment.findByIdAndDelete(id);
+
+    res.json({ comment: deletedComment });
+  } catch (error) {
+    next(error);
+  }
+};
