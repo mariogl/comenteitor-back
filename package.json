@@ -7,6 +7,7 @@
     "start": "node dist",
     "start-dev": "nodemon dist -q",
     "dev": "tsc -w",
+    "build": "tsc",
     "test": "jest src --watchAll",
     "test-coverage": "jest src --coverage --watchAll=false"
   },
@@ -44,5 +45,8 @@
     "mongoose": "^6.5.1",
     "morgan": "^1.10.0",
     "portfinder": "^1.0.28"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
