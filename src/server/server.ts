@@ -1,8 +1,8 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
-import generalError from "./middlewares/errors.js";
-import commentsRouter from "./routers/comments.js";
+import generalError from "./middlewares/errors";
+import commentsRouter from "./routers/comments";
 
 const app = express();
 

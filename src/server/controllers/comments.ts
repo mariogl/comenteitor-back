@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import Comment from "../../database/models/Comment.js";
-import { IComment } from "../../types/interfaces.js";
+import Comment from "../../database/models/Comment";
+import { IComment } from "../../types/interfaces";
 
 export const getComments = async (
   req: Request,
@@ -24,7 +24,10 @@ export const newComment = async (
   next: NextFunction
 ) => {
   try {
-    const comment = req.body;
+    const comment = {
+      ...req.body,
+      date: Date.now(),
+    };
     const newComment: IComment = await Comment.create(comment);
 
     res.status(201).json({ comment: newComment });

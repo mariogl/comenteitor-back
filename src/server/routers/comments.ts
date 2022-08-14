@@ -3,7 +3,7 @@ import {
   deleteComment,
   getComments,
   newComment,
-} from "../controllers/comments.js";
+} from "../controllers/comments";
 
 const commentsRouter = Router();
 

@@ -7,6 +7,11 @@ const CommentSchema = new Schema<IComment>({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now(),
+  },
 });
 
 const Comment = model<IComment>("Comment", CommentSchema, "comments");

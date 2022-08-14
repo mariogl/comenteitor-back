@@ -1,5 +1,5 @@
-import "../loadEnv.js";
-import app from "./server.js";
+import "../loadEnv";
+import app from "./server";
 
 const initializeServer = async (port: number) =>
   new Promise((resolve, reject) => {

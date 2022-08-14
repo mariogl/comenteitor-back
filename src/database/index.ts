@@ -1,4 +1,4 @@
-import "../loadEnv.js";
+import "../loadEnv";
 import chalk from "chalk";
 import Debug from "debug";
 import mongoose from "mongoose";
